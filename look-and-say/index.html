@@ -5,33 +5,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>Look and say sequence generator</title>
-  <style>
-    #result {
-      border: 1px solid gray;
-      font-size: smaller;
-      word-break: break-all;
-    }
-
-    .line {
-      border: 1px solid silver;
-      margin: 2px;
-      position: relative;
-    }
-
-    .progress {
-      height: 2px;
-      background: blue;
-      position: absolute;
-    }
-  </style>
+  <link rel="stylesheet" href="./index.css">
 </head>
 
 <body>
+  <h3>Look-and-say sequence generator</h3>
 
   <fieldset>
-    <input id="n" type="number"/>
-    <button id="generate">generate!</button>
-    <button id="clear">clear!</button>
+    <label for="n">Line number: </label>
+    <input id="n" type="number" />
+    <button id="generate">Generate</button>
+    <button id="clear">Clear</button>
   </fieldset>
 
   <div id="result">

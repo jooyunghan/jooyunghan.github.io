@@ -1,6 +1,9 @@
-document.getElementById("n").value = Number(new URLSearchParams(location.search).get("n"))|| 10;
-document.getElementById("generate").onclick = generate;
-document.getElementById("clear").onclick = clear;
+(function init() {
+  let n = new URLSearchParams(location.search).get("n");
+  document.getElementById("n").value = Number(n) || 10;
+  document.getElementById("generate").onclick = generate;
+  document.getElementById("clear").onclick = clear;
+})();
 
 const cacheSize = 8;
 
@@ -75,14 +78,13 @@ function generate() {
   div.classList.add("line");
   m.add(div);
 
-  const title = div.appendChild(document.createElement("div"));
-
   const progress = div.appendChild(document.createElement("div"));
   progress.classList.add("progress");
 
+  const title = div.appendChild(document.createElement("div"));
+
   const output = div.appendChild(document.createElement("div"));
-  output.style.maxHeight = "200px";
-  output.style.overflowY = "scroll";
+  output.className = "output";
 
   const g = buffer(ant(n));
 

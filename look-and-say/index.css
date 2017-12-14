@@ -1,0 +1,53 @@
+html, body {
+  margin: 0px;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+h3 {
+  padding: 0.5em;
+}
+
+fieldset {
+  border: none;
+  background: yellow;
+  margin: 0;
+  padding: 0.5em;
+}
+
+#top {
+  display: flex;
+}
+
+#result {
+  flex: 1 0 auto;
+  overflow: scroll;
+  height: 0;
+}
+
+.line {
+  border: 1px solid silver;
+  margin: 2px;
+  position: relative;
+}
+
+.progress {
+  height: 2px;
+  background: blue;
+  position: absolute;
+}
+
+
+.output {
+  margin-left: 50px;
+  max-height: 200px;
+  overflow-y: scroll;
+  font-size: smaller;
+  word-break: break-all;
+}
