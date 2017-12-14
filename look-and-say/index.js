@@ -89,25 +89,33 @@ function generate() {
   let length = 0;
   let estimate = 2.04 * Math.exp(0.265 * n);
   window.requestAnimationFrame(function r() {
-    const { value, done } = g.next();
-    if (!m.has(div)) {
-      return;
-    }
-    if (!done) {
-      length += String(value).length;
+    try {
+      const { value, done } = g.next();
 
-      const percent =
-        Number(Math.min(100, 100 * (length / estimate))).toFixed(2) + "%";
+      if (!m.has(div)) {
+        return;
+      }
+      if (!done) {
+        length += String(value).length;
 
-      title.textContent = `${n}: ${length} (${percent})`;
-      progress.style.width = percent;
-      output.appendChild(document.createTextNode(value));
+        const percent =
+          Number(Math.min(100, 100 * (length / estimate))).toFixed(2) + "%";
 
-      window.requestAnimationFrame(r);
-    } else {
-      title.textContent = `${n}: ${length}`;
-      div.removeChild(progress);
-      output.appendChild(document.createTextNode("."));
+        title.textContent = `${n}: ${length} (${percent})`;
+        progress.style.width = percent;
+        output.appendChild(document.createTextNode(value));
+
+        window.requestAnimationFrame(r);
+      } else {
+        title.textContent = `${n}: ${length}`;
+        div.removeChild(progress);
+        output.appendChild(document.createTextNode("."));
+      }
+    } catch (e) {
+      title.textContent = `${n}: Failed`;
+      const pre = document.createElement("pre");
+      pre.textContent = e.stack;
+      output.appendChild(pre);
     }
   });
 }
